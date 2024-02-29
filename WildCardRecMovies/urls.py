@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from moviecatalog.views import MoviesViewSet, ActorsViewSet, GenresViewSet, DirectorsViewSet
+from moviecatalog.views import MoviesViewSet, ActorsViewSet, GenresViewSet, DirectorsViewSet, MovieSearchView
 
 router = routers.DefaultRouter()
 router.register('movies', MoviesViewSet, basename='Movies')
@@ -27,5 +27,6 @@ router.register('directors', DirectorsViewSet, basename='Directors')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('api/movies/suggestions/', MovieSearchView.as_view(), name='movie-search'),
+    path('api/', include(router.urls)),
 ]
