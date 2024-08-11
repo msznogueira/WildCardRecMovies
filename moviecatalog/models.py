@@ -5,9 +5,10 @@ class Movie(models.Model):
     genre = models.ForeignKey('Genre', on_delete=models.CASCADE, null=True)
     director = models.ForeignKey('Director', on_delete=models.CASCADE, null=True)
     actors = models.ManyToManyField('Actor', related_name='movies')
-    description = models.TextField(null=True)
-    year = models.IntegerField(null=True)   
-    # created_at = models.DateTimeField(auto_now_add=True)
+    overview = models.TextField(null=True)
+    year = models.IntegerField(null=True)
+    release_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
@@ -34,10 +35,10 @@ class Director(models.Model):
         return self.name
     
 class SearchTerm(models.Model):
-    search_term = models.CharField(max_length=20)
+    term = models.CharField(max_length=20)
 
     def __str__(self) -> str:
-        return self.search_term
+        return self.term
 
 class MovieSearchTerm(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)

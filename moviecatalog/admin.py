@@ -23,8 +23,8 @@ class Actors(admin.ModelAdmin):
     search_fields = ('name',)
 
 class SearchTerms(admin.ModelAdmin):
-    list_display = ('id', 'search_term')
-    search_fields = ('search_term',)
+    list_display = ('id', 'term')
+    search_fields = ('term',)
 
 admin.site.register(Movie, Movies)
 admin.site.register(Genre, Genres)

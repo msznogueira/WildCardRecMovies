@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from moviecatalog.models import Movie, Genre, Director, Actor, SearchTerm
+from moviecatalog.models import Movie, Genre, Director, Actor, SearchTerm, MovieSearchTerm
 
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,4 +24,4 @@ class ActorSerializer(serializers.ModelSerializer):
 class SearchTermSerializer(serializers.ModelSerializer):
     class Meta:
         model = SearchTerm
-        fields = ['search_term']
+        fields = ['term']
